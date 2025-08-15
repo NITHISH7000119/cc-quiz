@@ -1,9 +1,15 @@
 const firebaseConfig = {
-  //   copy your firebase config informations
+  apiKey: "AIzaSyCLuminpUmMalhgTY86vHNhfKHBmD3FV7w",
+  authDomain: "cc-quiz-3bd7e.firebaseapp.com",
+  databaseURL: "https://cc-quiz-3bd7e-default-rtdb.firebaseio.com",
+  projectId: "cc-quiz-3bd7e",
+  storageBucket: "cc-quiz-3bd7e.firebasestorage.app",
+  messagingSenderId: "658492569940",
+  appId: "1:658492569940:web:ca6f46b406df3ebd0c30c1"
 };
 
-// initialize firebase
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 // reference your database
 var contactFormDB = firebase.database().ref("contactForm");
