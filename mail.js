@@ -1,13 +1,13 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyCLuminpUmMalhgTY86vHNhfKHBmD3FV7w",
-  authDomain: "cc-quiz-3bd7e.firebaseapp.com",
-  databaseURL: "https://cc-quiz-3bd7e-default-rtdb.firebaseio.com",
-  projectId: "cc-quiz-3bd7e",
-  storageBucket: "cc-quiz-3bd7e.firebasestorage.app",
-  messagingSenderId: "658492569940",
-  appId: "1:658492569940:web:ca6f46b406df3ebd0c30c1"
-};
-
+    apiKey: "AIzaSyBVoN4JYELuR1pjMm-A2lc4YUIpSRo7Srw",
+    authDomain: "ccmcq-quiz.firebaseapp.com",
+    databaseURL: "https://ccmcq-quiz-default-rtdb.firebaseio.com",
+    projectId: "ccmcq-quiz",
+    storageBucket: "ccmcq-quiz.firebasestorage.app",
+    messagingSenderId: "99149713645",
+    appId: "1:99149713645:web:6efc0752e69b3814013ce4"
+  };
+  
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
