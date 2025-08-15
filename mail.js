@@ -1,53 +1,47 @@
+// Import Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+// Your Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBVoN4JYELuR1pjMm-A2lc4YUIpSRo7Srw",
-    authDomain: "ccmcq-quiz.firebaseapp.com",
-    databaseURL: "https://ccmcq-quiz-default-rtdb.firebaseio.com",
-    projectId: "ccmcq-quiz",
-    storageBucket: "ccmcq-quiz.firebasestorage.app",
-    messagingSenderId: "99149713645",
-    appId: "1:99149713645:web:6efc0752e69b3814013ce4"
-  };
-  
+  apiKey: "AIzaSyCLuminpUmMalhgTY86vHNhfKHBmD3FV7w",
+  authDomain: "cc-quiz-3bd7e.firebaseapp.com",
+  databaseURL: "https://cc-quiz-3bd7e-default-rtdb.firebaseio.com",
+  projectId: "cc-quiz-3bd7e",
+  storageBucket: "cc-quiz-3bd7e.firebasestorage.app",
+  messagingSenderId: "658492569940",
+  appId: "1:658492569940:web:ca6f46b406df3ebd0c30c1"
+};
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-
-// reference your database
-var contactFormDB = firebase.database().ref("contactForm");
-
-document.getElementById("contactForm").addEventListener("submit", submitForm);
-
-function submitForm(e) {
+// Form submission
+document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
-  var name = getElementVal("name");
-  var emailid = getElementVal("emailid");
-  var msgContent = getElementVal("msgContent");
+  // Get field values
+  const name = document.getElementById("name").value.trim();
+  const dept = document.getElementById("dept").value.trim();
+  const deptNumber = document.getElementById("deptNumber").value.trim();
+  const emailid = document.getElementById("emailid").value.trim();
 
-  saveMessages(name, emailid, msgContent);
-
-  //   enable alert
-  document.querySelector(".alert").style.display = "block";
-
-  //   remove the alert
-  setTimeout(() => {
-    document.querySelector(".alert").style.display = "none";
-  }, 3000);
-
-  //   reset the form
-  document.getElementById("contactForm").reset();
-}
-
-const saveMessages = (name, emailid, msgContent) => {
-  var newContactForm = contactFormDB.push();
-
-  newContactForm.set({
-    name: name,
-    emailid: emailid,
-    msgContent: msgContent,
-  });
-};
-
-const getElementVal = (id) => {
-  return document.getElementById(id).value;
-};
+  if (name && dept && deptNumber && emailid) {
+    // Push data to Firebase
+    push(ref(db, "students"), {
+      name,
+      dept,
+      deptNumber,
+      emailid
+    })
+    .then(() => {
+      document.querySelector(".alert").style.display = "block";
+      setTimeout(() => document.querySelector(".alert").style.display = "none", 3000);
+      document.getElementById("contactForm").reset();
+    })
+    .catch(error => {
+      console.error("Error saving data:", error);
+    });
+  }
+});
