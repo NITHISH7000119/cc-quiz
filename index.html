@@ -1,40 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Messages | Firebase</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department Registration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(120deg, #4facfe, #00f2fe);
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .inputBox {
+      margin-bottom: 15px;
+    }
+    .inputBox label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .inputBox input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .inputBox input:focus {
+      border-color: #4facfe;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #4facfe, #00f2fe);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .alert {
+      display: none;
+      text-align: center;
+      margin-bottom: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
-    <div class="container">
-        <form id="contactForm">
-    <div class="alert">Your data was saved!</div>
 
+<div class="container">
+  <h2>Department Registration</h2>
+  <div class="alert">Form submitted successfully!</div>
+  <form id="contactForm">
     <div class="inputBox">
-        <input type="text" id="name" placeholder="Your Name" required />
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
     </div>
-
     <div class="inputBox">
-        <input type="text" id="college" placeholder="Your College Name" required />
+      <label for="dept">Department</label>
+      <input type="text" id="dept" placeholder="Enter your department" required>
     </div>
-
+    <div class="inputBox">
+      <label for="deptNumber">Department Number</label>
+      <input type="text" id="deptNumber" placeholder="Enter department number" required>
+    </div>
+    <div class="inputBox">
+      <label for="emailid">Email ID</label>
+      <input type="email" id="emailid" placeholder="Enter your email" required>
+    </div>
     <button type="submit">Submit</button>
-</form>
+  </form>
+</div>
 
-<p id="message"></p>
-
-<!-- Link your JS -->
 <script type="module" src="mail.js"></script>
 
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <script src="./mail.js"></script>
 </body>
-
 </html>
