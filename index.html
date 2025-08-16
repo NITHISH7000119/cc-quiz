@@ -98,8 +98,43 @@
   </form>
 </div>
 
-<script type="module" src="mail.js"></script>
+<script>
+  // 🔹 Replace this with your Google Script Web App URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzgBSYovlhi9twquGCmiMd0kYNxaFi9zQD0QnjgzzNRvnjS6gBLbCUyRqrRHrYGZuWwQA/exec"; 
 
+  const form = document.getElementById("contactForm");
+  const alertBox = document.querySelector(".alert");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const data = {
+      name: document.getElementById("name").value,
+      department: document.getElementById("dept").value,
+      dept_no: document.getElementById("deptNumber").value,
+      email: document.getElementById("emailid").value
+    };
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+      if (res.result === "success") {
+        alertBox.style.display = "block";
+        form.reset();
+
+        setTimeout(() => {
+          alertBox.style.display = "none";
+        }, 3000);
+      }
+    })
+    .catch(err => {
+      alert("Error: " + err.message);
+    });
+  });
+</script>
 
 </body>
 </html>
